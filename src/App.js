@@ -2,7 +2,7 @@ import './App.css';
 import './internal.css';
 
 function App() {
-  return (
+    return (
     <div className="App">
      <div className='layout'>
       <div className='formlyt'>
@@ -14,7 +14,7 @@ function App() {
             <tr><td><label>Password</label></td>
             <td><input id='password' type='password' maxLength={10}></input></td></tr>
              </table>
-             <button className='frmbutton'>Login</button>
+             <button className='frmbutton' type='submit'>Login</button>
           </fieldset>
         </form>
       </div>
