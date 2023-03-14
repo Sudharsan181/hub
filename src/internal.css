@@ -1,43 +1,97 @@
 body{
-    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/008/311/935/small/the-illustration-graphic-consists-of-abstract-background-with-a-blue-gradient-dynamic-shapes-composition-eps10-perfect-for-presentation-background-website-landing-page-wallpaper-vector.jpg);
-    background-position: cover;
+    background-image: url("https://cdn.pixabay.com/photo/2016/09/21/04/46/barley-field-1684052__480.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: fixed;
 }
-
-label{
-    padding-right: 10px;
+.Header{
+    font-size: 28px;
+    text-align: left;
 }
-.fldset{
-    width: 400px;
-    height: 150px;
-    border-radius: 20px;
+.img{
+    padding-top: 3%;
+    width: 250px;
+    height: auto;
     position: relative;
-    margin-top: 35%;
-    margin-left: 40px;
-}
-.frmtable{
-    align-items: center;
-   padding-top: 25px;
-   position: absolute;
-}
-.frmbutton{
-    background-color: transparent;
-    color: aliceblue;
-    margin-top: 120px;
-    position: relative;
-    border-style: outset;
-    border-radius: 8px;
 
 }
-input{
-    border-radius: 8px;
-    border-style: outset;
-    width: 120%;
-    height: 19px;
-    background-color: transparent;
-    color: aliceblue;
+.container{
+    padding-top: 13%;
+    color: wheat;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-display: block;
+    position: relative;
 }
-label{
-    color: aliceblue;
-}
+ 
+  .company-name {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  #menu ul {
+    display: none;
+  }
+  
+  #menu li:hover > ul {
+    display: block;
+  }
+  nav {
+    background-color: rgb(25, 141, 64);
+    font-size: 18px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+  }
+  
+  nav ul li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  nav ul li:hover {
+    background-color: #555;
+  }
+  
+  nav ul li:hover > ul {
+    display: block;
+  }
+  
+  nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+  }
+  
+  nav ul ul li {
+    display: block;
+  }
+  
+  nav ul ul li a {
+    color: #fff;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  nav ul ul li:hover {
+    background-color: #555;
+  }
+    
