@@ -55,13 +55,13 @@ const Menu = () => {
           <div className="employee-details-title">Employee Details</div>
           <form className="employee-details-form">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Employee Name"/>
+            <input type="text" id="name" name="name" placeholder="Employee Name" required/>
             <label htmlFor="date-of-join">Date of Join</label>
-            <input type="date" id="date-of-join" name="date-of-join" />
+            <input type="date" id="date-of-join" name="date-of-join" required/>
             <label htmlFor="salary">Salary</label>
-            <input type="text" id="salary" name="salary" placeholder="Salary" />
+            <input type="text" id="salary" name="salary" placeholder="Salary" required />
             <label htmlFor="appeared">Appeared</label>
-            <input type="text" id="appeared" name="appeared" placeholder="Days Appeared"/>
+            <input type="text" id="appeared" name="appeared" placeholder="Days Appeared" required/>
             <div className="employee-details-actions">
               <button type="submit">Save</button>
               <button type="button" onClick={handleEmployeeDetailsClick}>
@@ -76,13 +76,13 @@ const Menu = () => {
           <div className="employee-details-title">Income Details</div>
           <form className="employee-details-form">
             <label htmlFor="name">Income</label>
-            <input type="text" id="name" name="name" placeholder="Income"/>
+            <input type="text" id="name" name="name" placeholder="Income" required/>
             <label htmlFor="date-of-join\">Date of Entry</label>
-            <input type="date" id="date-of-join" name="date-of-join" />
+            <input type="date" id="date-of-join" name="date-of-join" required />
             <label htmlFor="salary">Profit Percentage</label>
-            <input type="text" id="salary" name="salary" placeholder="Profit Percentage" />
+            <input type="text" id="salary" name="salary" placeholder="Profit Percentage" required/>
             <label htmlFor="appeared">Days In Count</label>
-            <input type="text" id="appeared" name="appeared" placeholder="Days In Count"/>
+            <input type="text" id="appeared" name="appeared" placeholder="Days In Count" required/>
             <div className="employee-details-actions">
               <button type="submit">Save</button>
               <button type="button" onClick={handleIncomeDetailsClick}>
@@ -97,13 +97,13 @@ const Menu = () => {
           <div className="employee-details-title">Expenses Details</div>
           <form className="employee-details-form">
             <label htmlFor="name">Expenses</label>
-            <input type="text" id="name" name="name" placeholder="Expenses"/>
+            <input type="text" id="name" name="name" placeholder="Expenses" required/>
             <label htmlFor="date-of-join">Date of Entry</label>
-            <input type="date" id="date-of-join" name="date-of-Entry" />
+            <input type="date" id="date-of-join" name="date-of-Entry" required/>
             <label htmlFor="salary">Expenses Percentage</label>
-            <input type="text" id="salary" name="salary" placeholder="Expenses Percentage" />
+            <input type="text" id="salary" name="salary" placeholder="Expenses Percentage" required/>
             <label htmlFor="appeared">Days In Count</label>
-            <input type="text" id="appeared" name="appeared" placeholder="Days In Count"/>
+            <input type="text" id="appeared" name="appeared" placeholder="Days In Count" required/>
             <div className="employee-details-actions">
               <button type="submit">Save</button>
               <button type="button" onClick={handleExpenseDetailsClick}>

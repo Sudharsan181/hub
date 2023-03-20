@@ -136,7 +136,7 @@ function App() {
         </div>
         <div>
           <img
-            src="https://b1883154.smushcdn.com/1883154/wp-content/uploads/2021/07/image-1200x800-1.jpeg?lossy=1&strip=1&webp=1"
+            src="http://sk-farm.net/wp-content/uploads/2022/11/logo-01-2.png"
             alt="Not Available"
             className="img"  onClick={toggleDrilldown}
           ></img>
@@ -154,7 +154,7 @@ function App() {
           <button className="close" onClick={toggleDrilldown}>
             &times;
           </button>
-          <h2>DATA</h2>
+          <h2>STCEX DATA</h2>
           <AreaChart width={1100} height={550} data={data}>
         <CartesianGrid/>
         <XAxis dataKey="name" />
