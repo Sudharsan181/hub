@@ -43,7 +43,7 @@ const Menu = () => {
           </div>
         </div>
         <div className="menu-nav-item">
-          <a href="#">Contact</a> 
+          <a href="https://Sudharsan181.github.io">Contact</a> 
         </div>
       </nav>
       <div className="menu-search">

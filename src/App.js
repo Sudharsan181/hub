@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import './internal.css';
 import Menu from './menu';
+import { Chart } from 'chart.js/auto';
 import {AreaChart, Area} from 'recharts';
 import {
   LineChart,
@@ -60,6 +61,45 @@ function App() {
   const [drilldownVisible, setDrilldownVisible] = useState(false);
   const [drilldown2Visible, setDrilldown2Visible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Make an API request to Alpha Vantage to retrieve stock exchange data
+const apiKey = 'KQL3AZIGKUUD3O26';
+const symbol = 'AAPL';
+const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${apiKey}`;
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // Extract the stock exchange data from the API response
+    const timeSeriesData = data['Time Series (5min)'];
+    const labels = Object.keys(timeSeriesData).reverse();
+    const values = Object.values(timeSeriesData).map(item => parseFloat(item['4. close'])).reverse();
+
+    // Display the stock exchange data in a graph using Chart.js
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: symbol,
+          data: values,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            display: true
+          }]
+        }
+      }
+    });
+  });
 
 
 
@@ -155,7 +195,7 @@ function App() {
             &times;
           </button>
           <h2>STCEX DATA</h2>
-          <AreaChart width={1100} height={550} data={data}>
+          {/* < AreaChart width={1100} height={550} data={data}>
         <CartesianGrid/>
         <XAxis dataKey="name" />
         <YAxis />
@@ -164,13 +204,15 @@ function App() {
             stroke="green" fill="green" />
         <Area dataKey="y" stackId="1" 
             stroke="blue" fill="blue" />
-        </AreaChart>
+        </AreaChart> */}
+          <canvas id='myChart'></canvas>
         </div>
       )}
       {drilldown2Visible && (
         <div className="drilldown2">
           <Menu />
           <div className='linechart'>
+            <h2>IMEX DATA</h2>
           <ResponsiveContainer width="100%" aspect={3}>
                 <LineChart data={pdata} margin={{ right: 300 }}>
                     <CartesianGrid />
