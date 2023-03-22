@@ -100,7 +100,23 @@ fetch(url)
       }
     });
   });
-
+//fetch data from Alpha Vantage API
+fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=KQL3AZIGKUUD3O26')
+  .then(response => response.json())
+  .then(data => {
+    const tableBody = document.querySelector('#av-table tbody');
+    //parse data and populate the table
+    for (const [date, values] of Object.entries(data['Time Series (Daily)'])) {
+      const row = tableBody.insertRow();
+      row.insertCell().textContent = date;
+      row.insertCell().textContent = values['1. open'];
+      row.insertCell().textContent = values['2. high'];
+      row.insertCell().textContent = values['3. low'];
+      row.insertCell().textContent = values['4. close'];
+      row.insertCell().textContent = values['6. volume'];
+    }
+  })
+  .catch(error => console.error(error));
 
 
   const togglePopup = () => {
@@ -195,18 +211,24 @@ fetch(url)
             &times;
           </button>
           <h2>STCEX DATA</h2>
-          {/* < AreaChart width={1100} height={550} data={data}>
-        <CartesianGrid/>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Area dataKey="x" stackId="1" 
-            stroke="green" fill="green" />
-        <Area dataKey="y" stackId="1" 
-            stroke="blue" fill="blue" />
-        </AreaChart> */}
+          {/*  */}
           <canvas id='myChart'></canvas>
-        </div>
+          <h2>Alpha Vantage Details</h2>
+           <table id="av-table">
+             <thead>
+              <tr>
+               <th>Date</th>
+               <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+               <th>Close</th>
+                <th>Volume</th>
+             </tr>
+           </thead>
+         <tbody>
+       </tbody>
+     </table>
+   </div>
       )}
       {drilldown2Visible && (
         <div className="drilldown2">
@@ -227,6 +249,18 @@ fetch(url)
                         stroke="red" activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer></div>
+            <div className="chart2">
+            < AreaChart width={1100} height={550} data={data}>
+        <CartesianGrid/>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Area dataKey="x" stackId="1" 
+            stroke="green" fill="green" />
+        <Area dataKey="y" stackId="1" 
+            stroke="blue" fill="blue" />
+        </AreaChart>
+            </div>
         </div>      
       )}
       {showPopup && (

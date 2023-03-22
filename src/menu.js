@@ -5,6 +5,8 @@ const Menu = () => {
   const [showEmployeeDetails, setShowEmployeeDetails] = useState(false);
   const [showIncomeDetails, setShowIncomeDetails] = useState(false);
   const [showExpenseDetails, setShowExpenseDetails] = useState(false);
+  const [drilldown3Visible, setDrilldown3Visible] = useState(false);
+
 
   const handleEmployeeDetailsClick = () => {
     setShowEmployeeDetails(!showEmployeeDetails);
@@ -15,8 +17,9 @@ const Menu = () => {
   const handleExpenseDetailsClick = () => {
     setShowExpenseDetails(!showExpenseDetails);
   };
-  
-
+  const toggleDrilldown3 = () => {
+    setDrilldown3Visible(!drilldown3Visible);
+  };
   return (
     <div className="menu">
       <div className="menu-logo">SK Farms & Stockers</div>
@@ -32,6 +35,7 @@ const Menu = () => {
             </a>
             <a href="#" onClick={handleIncomeDetailsClick}>Income Details</a>
             <a href="#" onClick={handleExpenseDetailsClick}>Expenses Details</a>
+            <a  href="#" onClick={toggleDrilldown3}>Records&Details</a>
           </div>
         </div>
         <div className="menu-nav-item">
@@ -111,6 +115,11 @@ const Menu = () => {
               </button>
             </div>
           </form>
+        </div>
+      )}
+      {drilldown3Visible && (
+        <div className="drilldown3">
+          <Menu />   
         </div>
       )}
     </div>
