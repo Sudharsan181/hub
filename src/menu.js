@@ -1,16 +1,41 @@
 import React, { useState } from "react";
 import "./internal.css";
-
+import axios from "axios";
 const Menu = () => {
   const [showEmployeeDetails, setShowEmployeeDetails] = useState(false);
   const [showIncomeDetails, setShowIncomeDetails] = useState(false);
   const [showExpenseDetails, setShowExpenseDetails] = useState(false);
   const [drilldown3Visible, setDrilldown3Visible] = useState(false);
+  const [name, setname] = useState("");
+  const [dateofjoin, setdateofjoin] = useState("");
+  const [salary, setsalary] = useState("");
+  const [appeared, setappeared] = useState("");
 
+  const handleEmployeeSubmit = (event) => {
+    event.preventDefault();
 
+    axios.post("/api/employees", {
+      name,
+      dateofjoin,
+      salary,
+      appeared,
+    })
+    .then(response => {
+      console.log(response.data);
+      // clear the form
+      setname("");
+      setdateofjoin("");
+      setsalary("");
+      setappeared("");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  };
+ 
   const handleEmployeeDetailsClick = () => {
     setShowEmployeeDetails(!showEmployeeDetails);
-  };
+  }
   const handleIncomeDetailsClick = () => {
     setShowIncomeDetails(!showIncomeDetails);
   };
@@ -30,7 +55,7 @@ const Menu = () => {
         <div className="menu-nav-item">
           <a href="#">Data</a>
           <div className="menu-nav-dropdown">
-            <a href="#" onClick={handleEmployeeDetailsClick}>
+            <a href="#"onClick={handleEmployeeDetailsClick}>
               Employee Details
             </a>
             <a href="#" onClick={handleIncomeDetailsClick}>Income Details</a>
@@ -57,15 +82,15 @@ const Menu = () => {
       {showEmployeeDetails && (
         <div className="employee-details-container">
           <div className="employee-details-title">Employee Details</div>
-          <form className="employee-details-form">
+          <form className="employee-details-form" onSubmit={handleEmployeeSubmit}>
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Employee Name" required/>
+            <input type="text" id="name" name="name" placeholder="Employee Name"  value={name} onChange={(e) => setname(e.target.value)} required/>
             <label htmlFor="date-of-join">Date of Join</label>
-            <input type="date" id="date-of-join" name="date-of-join" required/>
+            <input type="date" id="dateofjoin" name="dateofjoin" value={dateofjoin} onChange={(e) => setdateofjoin(e.target.value)}  required/>
             <label htmlFor="salary">Salary</label>
-            <input type="text" id="salary" name="salary" placeholder="Salary" required />
+            <input type="text" id="salary" name="salary" placeholder="Salary" value={salary} onChange={(e) => setsalary(e.target.value)} required />
             <label htmlFor="appeared">Appeared</label>
-            <input type="text" id="appeared" name="appeared" placeholder="Days Appeared" required/>
+            <input type="text" id="appeared" name="appeared" placeholder="Days Appeared" value={appeared} onChange={(e) => setappeared(e.target.value)} required/>
             <div className="employee-details-actions">
               <button type="submit">Save</button>
               <button type="button" onClick={handleEmployeeDetailsClick}>

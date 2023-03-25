@@ -181,7 +181,7 @@ fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&sym
             <a href="https://sudharsan181.github.io/">Contact</a>
           </li>
           <li className="login" onClick={togglePopup}>
-            <a href="#">Login</a>
+            <a href="#">Admin</a>
           </li>
         </ul>
       </nav>
@@ -213,7 +213,7 @@ fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&sym
           <h2>STCEX DATA</h2>
           {/*  */}
           <canvas id='myChart'></canvas>
-          <h2>Alpha Vantage Details</h2>
+          <h2>STCEX Details</h2>
            <table id="av-table">
              <thead>
               <tr>
@@ -269,7 +269,7 @@ fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&sym
             <button className="close" onClick={togglePopup}>
               &times;
             </button>
-            <h2>Login</h2>
+            <h2>Admin login</h2>
             <form onSubmit={handleLogin}>
               <div className="form-field">
                 <label htmlFor="username">Username:</label>
@@ -281,11 +281,11 @@ fetch('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&sym
               </div>
               {isLoggedIn ? (
                     <button type="submit" className="submit" onClick={toggleDrilldown2}>
-                        Login
+                        Admit
                     </button>
                       ) : (
                       <button type="submit" className="submit">
-                          Login
+                          Admit
                        </button>
                         )}
             </form>
