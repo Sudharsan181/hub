@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./internal.css";
 import axios from "axios";
 const Menu = () => {
@@ -6,6 +6,18 @@ const Menu = () => {
   const [showIncomeDetails, setShowIncomeDetails] = useState(false);
   const [showExpenseDetails, setShowExpenseDetails] = useState(false);
   const [drilldown3Visible, setDrilldown3Visible] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/data")
+    .then(response => {
+      setData(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    }, []);
+
   const [name, setname] = useState("");
   const [dateofjoin, setdateofjoin] = useState("");
   const [salary, setsalary] = useState("");
@@ -144,7 +156,29 @@ const Menu = () => {
       )}
       {drilldown3Visible && (
         <div className="drilldown3">
-          <Menu />   
+          <Menu />
+          <div className="Employee-data">
+            <h2>Employee DATA</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date of Join</th>
+                <th>Salary</th>
+                <th>Appeared</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((employee, index) => (
+                <tr key={index}>
+                  <td>{employee.name}</td>
+                  <td>{employee.dateofjoin}</td>
+                  <td>{employee.salary}</td>
+                  <td>{employee.appeared}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table></div>
         </div>
       )}
     </div>
